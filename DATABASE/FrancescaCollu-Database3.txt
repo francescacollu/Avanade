@@ -1,0 +1,13 @@
+Francesca Collu
+Esercitazione Database 3
+
+Modelli ER.
+
+1) Videonoleggio
+Ho ipotizzato ogni film possa avere più di un attore principale.
+Ho inteso la data di noleggio come attributo della relazione di noleggio.
+
+2) Compagnia aerea
+Ho ipotizzato che: per ogni volo di linea si possa avere una sola partenza e un solo arrivo
+in ciascun aeroporto; ogni aeroporto sia servito da più compagnie aeree e che ogni compagnia
+aerea serva più di un aeroporto.

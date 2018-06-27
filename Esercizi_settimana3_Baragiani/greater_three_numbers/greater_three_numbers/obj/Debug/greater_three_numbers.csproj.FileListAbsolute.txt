@@ -1,0 +1,14 @@
+C:\Users\franc\source\repos\greater_three_numbers\greater_three_numbers\bin\Debug\greater_three_numbers.exe.config
+C:\Users\franc\source\repos\greater_three_numbers\greater_three_numbers\bin\Debug\greater_three_numbers.exe
+C:\Users\franc\source\repos\greater_three_numbers\greater_three_numbers\bin\Debug\greater_three_numbers.pdb
+C:\Users\franc\source\repos\greater_three_numbers\greater_three_numbers\obj\Debug\greater_three_numbers.csprojAssemblyReference.cache
+C:\Users\franc\source\repos\greater_three_numbers\greater_three_numbers\obj\Debug\greater_three_numbers.csproj.CoreCompileInputs.cache
+C:\Users\franc\source\repos\greater_three_numbers\greater_three_numbers\obj\Debug\greater_three_numbers.exe
+C:\Users\franc\source\repos\greater_three_numbers\greater_three_numbers\obj\Debug\greater_three_numbers.pdb
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\greater_three_numbers\greater_three_numbers\bin\Debug\greater_three_numbers.exe.config
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\greater_three_numbers\greater_three_numbers\bin\Debug\greater_three_numbers.exe
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\greater_three_numbers\greater_three_numbers\bin\Debug\greater_three_numbers.pdb
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\greater_three_numbers\greater_three_numbers\obj\Debug\greater_three_numbers.csprojAssemblyReference.cache
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\greater_three_numbers\greater_three_numbers\obj\Debug\greater_three_numbers.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\greater_three_numbers\greater_three_numbers\obj\Debug\greater_three_numbers.exe
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\greater_three_numbers\greater_three_numbers\obj\Debug\greater_three_numbers.pdb

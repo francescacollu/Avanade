@@ -1,0 +1,7 @@
+C:\Users\franc\source\repos\biblioteca\biblioteca\bin\Debug\biblioteca.exe.config
+C:\Users\franc\source\repos\biblioteca\biblioteca\bin\Debug\biblioteca.exe
+C:\Users\franc\source\repos\biblioteca\biblioteca\bin\Debug\biblioteca.pdb
+C:\Users\franc\source\repos\biblioteca\biblioteca\obj\Debug\biblioteca.csprojAssemblyReference.cache
+C:\Users\franc\source\repos\biblioteca\biblioteca\obj\Debug\biblioteca.csproj.CoreCompileInputs.cache
+C:\Users\franc\source\repos\biblioteca\biblioteca\obj\Debug\biblioteca.exe
+C:\Users\franc\source\repos\biblioteca\biblioteca\obj\Debug\biblioteca.pdb

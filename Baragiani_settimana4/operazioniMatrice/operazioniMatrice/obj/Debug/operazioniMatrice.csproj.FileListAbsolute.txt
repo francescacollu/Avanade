@@ -1,0 +1,7 @@
+C:\Users\franc\Desktop\Corso Avanade\operazioniMatrice\operazioniMatrice\bin\Debug\operazioniMatrice.exe.config
+C:\Users\franc\Desktop\Corso Avanade\operazioniMatrice\operazioniMatrice\bin\Debug\operazioniMatrice.exe
+C:\Users\franc\Desktop\Corso Avanade\operazioniMatrice\operazioniMatrice\bin\Debug\operazioniMatrice.pdb
+C:\Users\franc\Desktop\Corso Avanade\operazioniMatrice\operazioniMatrice\obj\Debug\operazioniMatrice.csprojAssemblyReference.cache
+C:\Users\franc\Desktop\Corso Avanade\operazioniMatrice\operazioniMatrice\obj\Debug\operazioniMatrice.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\Corso Avanade\operazioniMatrice\operazioniMatrice\obj\Debug\operazioniMatrice.exe
+C:\Users\franc\Desktop\Corso Avanade\operazioniMatrice\operazioniMatrice\obj\Debug\operazioniMatrice.pdb

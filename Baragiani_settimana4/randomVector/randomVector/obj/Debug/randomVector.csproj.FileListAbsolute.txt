@@ -1,0 +1,7 @@
+c:\users\franc\source\repos\randomVector\randomVector\bin\Debug\randomVector.exe.config
+c:\users\franc\source\repos\randomVector\randomVector\bin\Debug\randomVector.exe
+c:\users\franc\source\repos\randomVector\randomVector\bin\Debug\randomVector.pdb
+c:\users\franc\source\repos\randomVector\randomVector\obj\Debug\randomVector.csprojAssemblyReference.cache
+c:\users\franc\source\repos\randomVector\randomVector\obj\Debug\randomVector.csproj.CoreCompileInputs.cache
+c:\users\franc\source\repos\randomVector\randomVector\obj\Debug\randomVector.exe
+c:\users\franc\source\repos\randomVector\randomVector\obj\Debug\randomVector.pdb

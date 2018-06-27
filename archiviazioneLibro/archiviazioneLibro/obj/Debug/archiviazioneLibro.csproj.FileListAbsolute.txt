@@ -1,0 +1,7 @@
+C:\Users\franc\Desktop\Corso Avanade\archiviazioneLibro\archiviazioneLibro\bin\Debug\archiviazioneLibro.exe.config
+C:\Users\franc\Desktop\Corso Avanade\archiviazioneLibro\archiviazioneLibro\bin\Debug\archiviazioneLibro.exe
+C:\Users\franc\Desktop\Corso Avanade\archiviazioneLibro\archiviazioneLibro\bin\Debug\archiviazioneLibro.pdb
+C:\Users\franc\Desktop\Corso Avanade\archiviazioneLibro\archiviazioneLibro\obj\Debug\archiviazioneLibro.csprojAssemblyReference.cache
+C:\Users\franc\Desktop\Corso Avanade\archiviazioneLibro\archiviazioneLibro\obj\Debug\archiviazioneLibro.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\Corso Avanade\archiviazioneLibro\archiviazioneLibro\obj\Debug\archiviazioneLibro.exe
+C:\Users\franc\Desktop\Corso Avanade\archiviazioneLibro\archiviazioneLibro\obj\Debug\archiviazioneLibro.pdb

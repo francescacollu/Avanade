@@ -1,0 +1,14 @@
+C:\Users\franc\source\repos\even_or_not\even_or_not\bin\Debug\even_or_not.exe.config
+C:\Users\franc\source\repos\even_or_not\even_or_not\bin\Debug\even_or_not.exe
+C:\Users\franc\source\repos\even_or_not\even_or_not\bin\Debug\even_or_not.pdb
+C:\Users\franc\source\repos\even_or_not\even_or_not\obj\Debug\even_or_not.csprojAssemblyReference.cache
+C:\Users\franc\source\repos\even_or_not\even_or_not\obj\Debug\even_or_not.csproj.CoreCompileInputs.cache
+C:\Users\franc\source\repos\even_or_not\even_or_not\obj\Debug\even_or_not.exe
+C:\Users\franc\source\repos\even_or_not\even_or_not\obj\Debug\even_or_not.pdb
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\even_or_not\even_or_not\bin\Debug\even_or_not.exe.config
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\even_or_not\even_or_not\bin\Debug\even_or_not.exe
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\even_or_not\even_or_not\bin\Debug\even_or_not.pdb
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\even_or_not\even_or_not\obj\Debug\even_or_not.csprojAssemblyReference.cache
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\even_or_not\even_or_not\obj\Debug\even_or_not.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\even_or_not\even_or_not\obj\Debug\even_or_not.exe
+C:\Users\franc\Desktop\Corso Avanade\Esercizi_settimana3_Baragiani\even_or_not\even_or_not\obj\Debug\even_or_not.pdb

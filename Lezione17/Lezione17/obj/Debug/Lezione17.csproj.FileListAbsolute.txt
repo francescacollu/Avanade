@@ -1,0 +1,7 @@
+C:\Users\franc\Desktop\Corso Avanade\Lezione17\Lezione17\obj\Debug\Lezione17.csprojAssemblyReference.cache
+C:\Users\franc\Desktop\Corso Avanade\Lezione17\Lezione17\obj\Debug\Lezione17.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\Corso Avanade\Lezione17\Lezione17\bin\Debug\Lezione17.exe.config
+C:\Users\franc\Desktop\Corso Avanade\Lezione17\Lezione17\bin\Debug\Lezione17.exe
+C:\Users\franc\Desktop\Corso Avanade\Lezione17\Lezione17\bin\Debug\Lezione17.pdb
+C:\Users\franc\Desktop\Corso Avanade\Lezione17\Lezione17\obj\Debug\Lezione17.exe
+C:\Users\franc\Desktop\Corso Avanade\Lezione17\Lezione17\obj\Debug\Lezione17.pdb
