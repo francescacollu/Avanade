@@ -58,17 +58,29 @@ namespace StanzaAlbergo
             set { checkOut = value; }
         }
 
+        // metodo accessorio di scrittura della stanza
+        public override string ToString()
+        {
+            return "Stanza #"+ Numero +" prenotata dal "+ CheckIn +" al "+ CheckOut +" da "+ Cliente +".";
+        }
+
         // metodo che permette di inserire i dati del cliente (nome, date di arrivo e partenza)
         public void Dati()
         {
             Console.WriteLine("Inserire nome e cognome del cliente: ");
             Cliente = Console.ReadLine();
-            Console.WriteLine("Inserire la data di check-in: ");
+            Console.WriteLine("Inserire la data di check-in (formato YYYY-MM-DD): ");
             string userInput = Console.ReadLine();
             CheckIn = Convert.ToDateTime(userInput);
-            Console.WriteLine("Inserire la data di check-out: ");
+            Console.WriteLine("Inserire la data di check-out (formato YYYY-MM-DD): ");
             userInput = Console.ReadLine();
             CheckOut = Convert.ToDateTime(userInput);
+        }
+
+        // metodo che conferma l'avvenuta prenotazione
+        public void Prenotata()
+        {
+            Console.WriteLine("La prenotazione è andata a buon fine.");
         }
 
     }
@@ -113,21 +125,33 @@ namespace StanzaAlbergo
             set { dataOut = value; }
         }
 
-        // metodo che gestisce la prenotazione
-        public void Gestione()
+        // metodo che gestisce la prenotazione di una certa stanza
+        public void Gestione(StanzaAlbergo stanza, StanzaAlbergo stanzaAlbergo)
         {
-            if (dataIn > stanza.CheckIn || dataOut < stanza.CheckOut)
+            if (stanza.CheckIn < stanzaAlbergo.CheckIn)
             {
-                Console.WriteLine("La stanza" + stanza.Numero + " è già occupata");
+                if (stanza.CheckOut < stanzaAlbergo.CheckIn)
+                {
+                    stanza.Prenotata();
+                    Console.WriteLine(stanza.ToString());
+                }
+                else if(stanza.CheckOut > stanzaAlbergo.CheckIn || stanza.CheckOut > stanzaAlbergo.CheckOut)
+                {
+                    Console.WriteLine("La stanza #" + stanzaAlbergo.Numero + " è già occupata.");
+                }
             }
-            else if (dataIn < stanza.CheckIn && dataOut > stanza.CheckOut)
+            else if (stanza.CheckIn > stanzaAlbergo.CheckIn && stanza.CheckIn < stanzaAlbergo.CheckOut)
             {
-
+                Console.WriteLine("La stanza #" + stanzaAlbergo.Numero + " è già occupata.");
+            }
+            else if(stanza.CheckIn > stanzaAlbergo.CheckOut && stanza.CheckOut > stanzaAlbergo.CheckOut)
+            {
+                stanza.Prenotata();
+                Console.WriteLine(stanza.ToString());
             }
         }
 
     }
-
 
     class Test
     {
@@ -140,8 +164,16 @@ namespace StanzaAlbergo
             DateTime data2out = new DateTime(2018, 07, 23);
 
             // istanziazione delle stanze presenti nell'albergo
-            StanzaAlbergo stanza = new StanzaAlbergo(1, data1in, data1out, "Michelangelo Merisi");
+            StanzaAlbergo stanza1 = new StanzaAlbergo(1, data1in, data1out, "Michelangelo Merisi");
             StanzaAlbergo stanza2 = new StanzaAlbergo(2, data2in, data2out, "Raffaello Sanzio");
+            StanzaAlbergo stanza3 = new StanzaAlbergo(3, data2in, data2out, "Leonardo Da Vinci");
+            StanzaAlbergo stanza4 = new StanzaAlbergo(4, data2in, data2out, "Donatello Bardi");
+
+            // istanziazione della prenotazione
+            StanzaAlbergo stanza = new StanzaAlbergo();
+            stanza.Dati();
+            Prenotazione prenotazione_stanza = new Prenotazione(stanza, stanza.CheckIn, stanza.CheckOut);
+            prenotazione_stanza.Gestione(stanza, stanza1); // si desidera prenotare la stanza #1
 
             Console.ReadKey();
         }
