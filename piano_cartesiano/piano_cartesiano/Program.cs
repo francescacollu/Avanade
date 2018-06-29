@@ -88,6 +88,16 @@ namespace piano_cartesiano
         {
             Console.WriteLine("La distanza del punto (" + x + "," + y + ") dall'asse X è " + Math.Abs(y) +" e dall'asse Y è " + Math.Abs(x));
         }
+
+        // overload dell'operatore + per somma di punti
+        public static Punto operator +(Punto p1, Punto p2)
+        {
+            Punto S = new Punto();
+            S.X = p1.X + p2.X;
+            S.Y = p1.Y + p2.Y;
+
+            return S;
+        }
     }
 
     public class Segmento
@@ -140,6 +150,7 @@ namespace piano_cartesiano
             else
                 Console.WriteLine("Il segmento è parallelo all'asse Y.");
         }
+
     }
 
     class Program
@@ -161,6 +172,9 @@ namespace piano_cartesiano
             Console.WriteLine("La distanza del punto "+ A.ToString() + " dall'origine è " + A.DistanzaOrigine());
             Console.WriteLine("La distanza del punto " + B.ToString() + " dall'origine è " + B.DistanzaOrigine());
 
+            Punto S = new Punto();
+            S = A + B;
+            Console.WriteLine("La somma tra i punti A e B è " + S.ToString());
 
             Segmento segmento = new Segmento(A, B);
             Console.WriteLine();
