@@ -1,4 +1,4 @@
-﻿// Francesca Collu - esercitazione settimana 6
+﻿// Francesca Collu - esercitazione settimana 7
 
 using System;
 using System.Collections.Generic;
@@ -220,6 +220,7 @@ namespace StanzaAlbergo
                         libera = libera && !Prenotazione.OverLap(prenotazione, richiesta);
                         if (!libera) break;
                     }
+
                     if (libera)
                     {
                         prenotata = true;
@@ -244,6 +245,11 @@ namespace StanzaAlbergo
                 foreach (StanzaAlbergo stanza in stanze)
                 {
                     Console.WriteLine("La stanza #" + stanza.Numero + " ha " + stanza.Prenotazioni.Count + " prenotazioni.");
+
+                    foreach (Prenotazione prenotazione in stanza.Prenotazioni)
+                    {
+                        Console.WriteLine("La stanza " + stanza.Numero + " è stata prenotata da " + prenotazione.Cliente + " dal " + prenotazione.CheckIn + " al " + prenotazione.CheckOut + ".");
+                    }
                 }
 
             }
