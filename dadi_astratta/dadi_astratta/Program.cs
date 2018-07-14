@@ -1,5 +1,5 @@
 ﻿// Francesca Collu - settimana 8
-// Versione della soluzione senza l'utilizzo della classe astratta.
+// Uso della classe astratta che rappresenta i comportamenti comuni degli oggetti dadi e moneta
 
 using System;
 using System.Collections.Generic;
@@ -7,17 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dice_and_coins
+namespace dadi
 {
-    public class Dado
+    public abstract class OggettoAleatorio
+    {
+        protected List<int> risultati;
+
+        // metodo che verrà utilizzato di default dalla classe figlia Moneta; 
+        // verrà invece sovrascritto dalla classe Dado.
+        Random rdm = new Random();
+        public virtual int Risultato()
+        {
+            int a = rdm.Next(0, 2);
+            return a;
+        }
+
+    }
+
+    // classe derivata
+    public class Dado : OggettoAleatorio
     {
         private int nFacce;
-        private List<int> risultati;
 
         public Dado(int nFacce)
         {
             this.nFacce = nFacce;
             risultati = new List<int>();
+
         }
 
         public Dado()
@@ -36,8 +52,6 @@ namespace dice_and_coins
             get { return risultati; }
         }
 
-
-
         // metodo statico per l'input da tastiera del numero di facce del dado che si vuole lanciare
         static public Dado LeggiDado()
         {
@@ -51,7 +65,7 @@ namespace dice_and_coins
         }
 
         Random random = new Random();
-        public int Risultato()
+        public override int Risultato()
         {
             int num = random.Next(1, nFacce + 1);
             Risultati.Add(num);
@@ -60,14 +74,9 @@ namespace dice_and_coins
 
     }
 
-    public class Coins
+    // classe derivata
+    public class Moneta : OggettoAleatorio
     {
-        Random random = new Random();
-        public int Risultato()
-        {
-            return random.Next(0, 2);
-        }
-
     }
 
     class Program
@@ -83,7 +92,7 @@ namespace dice_and_coins
         {
             List<int> risultati = new List<int>();
             List<Dado> dadi = new List<Dado>();
-            
+
             int a;
             bool again = true;
             while (again)
@@ -108,7 +117,7 @@ namespace dice_and_coins
                                     Console.WriteLine("Quanti dadi si vogliono lanciare?");
                                     string inputD = Console.ReadLine();
                                     int numD = Convert.ToInt32(inputD);
-                                    if(numD == 0) { break; }
+                                    if (numD == 0) { break; }
 
                                     for (int j = 0; j < numD; j++)
                                     {
@@ -127,9 +136,9 @@ namespace dice_and_coins
                                     Console.WriteLine("Si vuole visualizzare il riepilogo? [s] o [n]");
                                     string inputD2 = Console.ReadLine();
                                     int rispostaD2 = Convert.ToChar(inputD2);
-                                    if(rispostaD2 == 's')
+                                    if (rispostaD2 == 's')
                                     {
-                                        Console.WriteLine("\nRiepilogo dei lanci effettuati:");
+                                        Console.WriteLine("Riepilogo dei lanci effettuati: \n");
                                         foreach (Dado d in dadi)
                                         {
                                             foreach (int r in d.Risultati)
@@ -143,7 +152,7 @@ namespace dice_and_coins
                             }
                             else
                             {
-                                Console.WriteLine("\nRiepilogo dei lanci effettuati: \n");
+                                Console.WriteLine("Riepilogo dei lanci effettuati: \n");
                                 foreach (Dado d in dadi)
                                 {
                                     foreach (int r in d.Risultati)
@@ -163,7 +172,7 @@ namespace dice_and_coins
 
                             if (tiro_riep == 'L')
                             {
-                                Coins coin = new Coins();
+                                Moneta coin = new Moneta();
                                 int toss = NumeroLanci();
                                 Console.Clear();
                                 for (int i = 0; i < toss; i++)
@@ -177,7 +186,7 @@ namespace dice_and_coins
                                 int rispostaM2 = Convert.ToChar(inputM2);
                                 if (rispostaM2 == 's')
                                 {
-                                    Console.WriteLine("\nRiepilogo:");
+                                    Console.WriteLine("Riepilogo: \n");
                                     foreach (int r in risultati)
                                     {
                                         if (r == 0) { Console.WriteLine("M : croce"); }
@@ -188,7 +197,7 @@ namespace dice_and_coins
                             }
                             else
                             {
-                                Console.WriteLine("\nRiepilogo:");
+                                Console.WriteLine("Riepilogo: \n");
                                 foreach (int r in risultati)
                                 {
                                     if (r == 0) { Console.WriteLine("M : croce"); }
@@ -214,3 +223,4 @@ namespace dice_and_coins
         }
     }
 }
+

@@ -75,6 +75,7 @@ namespace dice_and_coins
 
         static void Main(string[] args)
         {
+
             List<int> risultati = new List<int>();
 
             Dado dado = Dado.LeggiDado();
