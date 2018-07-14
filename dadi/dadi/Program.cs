@@ -11,20 +11,32 @@ namespace dadi
 {
     public abstract class OggettoAleatorio
     {
-        protected Random result = new Random();
+        protected Random risultato;
 
         public virtual void Lancio()
         {
             Console.WriteLine("Lancio avvenuto!");
         }
 
-        public virtual int Risultato()
+        public virtual int Risultato() // metodo che verrà utilizzato di default dalla classe figlia Moneta; i possibili risultati saranno 0 (=croce) e 1 (=testa)
         {
-            int a = result.Next(0, 2);
+            int a = risultato.Next(2);
             return a;
+        }
+
+        public virtual void Riepilogo()
+        {
+            List<int> risultati = new List<int>();
+
+            foreach(OggettoAleatorio oggetto in risultati)
+            {
+                risultati.Add(oggetto.Risultato());
+            }
+
         }
     }
 
+    // classe derivata
     public class Dado : OggettoAleatorio
     {
         private int nFacce;
@@ -46,8 +58,7 @@ namespace dadi
 
         public override int Risultato()
         {
-            int a = result.Next(1, NFacce + 1);
-            if (NFacce < 1) Console.WriteLine("Inserire un valore valido (maggiore di 1)");
+            int a = risultato.Next(1, NFacce + 1);
             return a;
         }
 
@@ -57,6 +68,7 @@ namespace dadi
         }
     }
 
+    // classe derivata
     public class Moneta : OggettoAleatorio
     {
     }
@@ -65,11 +77,8 @@ namespace dadi
     {
         static void Main(string[] args)
         {
-            Dado dado = new Dado();
             Moneta moneta = new Moneta();
-
-            List<Dado> dadi = new List<Dado>();
-            List<Moneta> monete = new List<Moneta>();
+            Dado dado = new Dado();
 
             char scelta;
             string userInput;
@@ -93,16 +102,18 @@ namespace dadi
                             dado.Lancio();
                             dado.Risultato();
                             Console.WriteLine(dado.ToString() + dado.Risultato());
-                            dadi.Add(dado);
                         }
+                        dado.Riepilogo();
                         break;
 
                     case 'm':
-                        moneta.Lancio();
-                        moneta.Risultato();
-                        if (moneta.Risultato() == 0) Console.WriteLine("Moneta : croce");
-                        else if (moneta.Risultato() == 1) Console.WriteLine("Moneta : testa");
-                        monete.Add(moneta);
+                        for (int i = 0; i < 5; i++)
+                        {
+                            moneta.Lancio();
+                            moneta.Risultato();
+                            Console.WriteLine("Risultato: " + moneta.Risultato());
+                        }
+                        moneta.Riepilogo();
                         break;
                 }
 
@@ -114,12 +125,6 @@ namespace dadi
                 {
                     again = false;
                     Console.WriteLine("Premere un tasto per uscire.");
-                }
-
-                Console.WriteLine("Riepilogo: \n");
-                foreach(Dado dadino in dadi)
-                {
-                    Console.WriteLine(dado.ToString() + dado.Risultato());
                 }
             }
             Console.ReadKey();

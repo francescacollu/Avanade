@@ -1,7 +1,0 @@
-C:\Users\franc\Desktop\Corso Avanade\Lezione16\Lezione16\bin\Debug\Lezione16.exe.config
-C:\Users\franc\Desktop\Corso Avanade\Lezione16\Lezione16\bin\Debug\Lezione16.exe
-C:\Users\franc\Desktop\Corso Avanade\Lezione16\Lezione16\bin\Debug\Lezione16.pdb
-C:\Users\franc\Desktop\Corso Avanade\Lezione16\Lezione16\obj\Debug\Lezione16.csprojAssemblyReference.cache
-C:\Users\franc\Desktop\Corso Avanade\Lezione16\Lezione16\obj\Debug\Lezione16.csproj.CoreCompileInputs.cache
-C:\Users\franc\Desktop\Corso Avanade\Lezione16\Lezione16\obj\Debug\Lezione16.exe
-C:\Users\franc\Desktop\Corso Avanade\Lezione16\Lezione16\obj\Debug\Lezione16.pdb

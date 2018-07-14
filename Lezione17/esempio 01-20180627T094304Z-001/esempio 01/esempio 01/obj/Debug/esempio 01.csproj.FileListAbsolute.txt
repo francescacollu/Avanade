@@ -1,7 +1,0 @@
-C:\Users\Didattica\Documents\C#\Corso Avanade 2018\Esempi slides\Lezione 10 esempi\esempio 01\esempio 01\bin\Debug\esempio 01.exe.config
-C:\Users\Didattica\Documents\C#\Corso Avanade 2018\Esempi slides\Lezione 10 esempi\esempio 01\esempio 01\bin\Debug\esempio 01.exe
-C:\Users\Didattica\Documents\C#\Corso Avanade 2018\Esempi slides\Lezione 10 esempi\esempio 01\esempio 01\bin\Debug\esempio 01.pdb
-C:\Users\Didattica\Documents\C#\Corso Avanade 2018\Esempi slides\Lezione 10 esempi\esempio 01\esempio 01\obj\Debug\esempio 01.csprojResolveAssemblyReference.cache
-C:\Users\Didattica\Documents\C#\Corso Avanade 2018\Esempi slides\Lezione 10 esempi\esempio 01\esempio 01\obj\Debug\esempio 01.csproj.CoreCompileInputs.cache
-C:\Users\Didattica\Documents\C#\Corso Avanade 2018\Esempi slides\Lezione 10 esempi\esempio 01\esempio 01\obj\Debug\esempio 01.exe
-C:\Users\Didattica\Documents\C#\Corso Avanade 2018\Esempi slides\Lezione 10 esempi\esempio 01\esempio 01\obj\Debug\esempio 01.pdb
