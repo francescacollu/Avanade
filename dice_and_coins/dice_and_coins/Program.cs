@@ -12,10 +12,12 @@ namespace dice_and_coins
     public class Dado
     {
         private int nFacce;
+        private List<int> risultati;
 
         public Dado(int nFacce)
         {
             this.nFacce = nFacce;
+            risultati = new List<int>();
         }
 
         public Dado()
@@ -28,6 +30,13 @@ namespace dice_and_coins
             get { return nFacce; }
             set { nFacce = value; }
         }
+
+        public List<int> Risultati
+        {
+            get { return risultati; }
+        }
+
+
 
         // metodo statico per l'input da tastiera del numero di facce del dado che si vuole lanciare
         static public Dado LeggiDado()
@@ -44,8 +53,11 @@ namespace dice_and_coins
         Random random = new Random();
         public int Risultato()
         {
-            return random.Next(0, nFacce+1);
+            int num = random.Next(1, nFacce + 1);
+            Risultati.Add(num);
+            return num;
         }
+
 
     }
 
@@ -72,6 +84,7 @@ namespace dice_and_coins
         static void Main(string[] args)
         {
             List<int> risultati = new List<int>();
+            List<Dado> dadi = new List<Dado>();
             
             int a;
             bool again = true;
@@ -84,60 +97,110 @@ namespace dice_and_coins
                 switch (scelta)
                 {
                     case 'd':
-                        bool rolling = true;
-                        while (rolling)
                         {
-                            Console.WriteLine("Quanti dadi si vogliono lanciare?");
-                            string inputD = Console.ReadLine();
-                            int numD = Convert.ToInt32(inputD);
+                            Console.WriteLine("Premere [L] per lanciare i dadi o [R] per il riepilogo dei lanci effettuati: ");
+                            string inputD1 = Console.ReadLine();
+                            char lancio_riep = Convert.ToChar(inputD1);
 
-                            Dado dado = Dado.LeggiDado();
-                            int roll = NumeroLanci();
-                            //Console.Clear();
-                            for (int i = 0; i < roll; i++)
+                            if (lancio_riep == 'L')
                             {
-                                a = dado.Risultato();
-                                Console.WriteLine(a);
-                                risultati.Add(a);
+                                bool rolling = true;
+                                while (rolling)
+                                {
+                                    Console.WriteLine("Quanti dadi si vogliono lanciare?");
+                                    string inputD = Console.ReadLine();
+                                    int numD = Convert.ToInt32(inputD);
+                                    if(numD == 0) { break; }
+
+                                    for (int j = 0; j < numD; j++)
+                                    {
+                                        Dado dado = Dado.LeggiDado();
+                                        dadi.Add(dado);
+
+                                        int roll = NumeroLanci();
+                                        for (int i = 0; i < roll; i++)
+                                        {
+                                            a = dado.Risultato();
+                                            Console.WriteLine(a);
+                                        }
+
+                                    }
+
+                                    Console.WriteLine("Si vuole visualizzare il riepilogo? [s] o [n]");
+                                    string inputD2 = Console.ReadLine();
+                                    int rispostaD2 = Convert.ToChar(inputD2);
+                                    if(rispostaD2 == 's')
+                                    {
+                                        Console.WriteLine("Riepilogo dei lanci effettuati: \n");
+                                        foreach (Dado d in dadi)
+                                        {
+                                            foreach (int r in d.Risultati)
+                                            {
+                                                Console.WriteLine("D" + d.NFacce + " : " + r);
+                                            }
+                                        }
+                                    }
+                                    else { break; }
+                                }
                             }
-                            
-                            Console.WriteLine("Vuoi continuare? [s] per sì, [n] per no.");
-                            userInput = Console.ReadLine();
-                            char rD = Convert.ToChar(userInput);
-                            if (rD == 's') { rolling = true; }
                             else
                             {
-                                rolling = false;
-                                Console.WriteLine(".");
-                            }
-
-                            Console.WriteLine("Riepilogo dei lanci effettuati: \n");
-                            foreach (int r in risultati)
-                            {
-                                Console.WriteLine("D" + dado.NFacce + " : " + r);
+                                Console.WriteLine("Riepilogo dei lanci effettuati: \n");
+                                foreach (Dado d in dadi)
+                                {
+                                    foreach (int r in d.Risultati)
+                                    {
+                                        Console.WriteLine("D" + d.NFacce + " : " + r);
+                                    }
+                                }
                             }
                         }
                         break;
 
                     case 'm':
-                        Coins coin = new Coins();
-                        int toss = NumeroLanci();
-                        Console.Clear();
-                        for (int i = 0; i < toss; i++)
                         {
-                            a = coin.Risultato();
-                            //Console.WriteLine(a);
-                            risultati.Add(a);
-                        }
+                            Console.WriteLine("Premere [L] per tirare la moneta o [R] per il riepilogo del lancio effettuato: ");
+                            string inputM1 = Console.ReadLine();
+                            char tiro_riep = Convert.ToChar(inputM1);
 
-                        Console.WriteLine("Riepilogo: \n");
-                        foreach (int r in risultati)
-                        {
-                            if (r == 0) { Console.WriteLine("M : croce"); }
-                            else { Console.WriteLine("M : testa"); }
+                            if (tiro_riep == 'L')
+                            {
+                                Coins coin = new Coins();
+                                int toss = NumeroLanci();
+                                Console.Clear();
+                                for (int i = 0; i < toss; i++)
+                                {
+                                    a = coin.Risultato();
+                                    //Console.WriteLine(a);
+                                    risultati.Add(a);
+                                }
+                                Console.WriteLine("Si vuole visualizzare il riepilogo? [s] o [n]");
+                                string inputM2 = Console.ReadLine();
+                                int rispostaM2 = Convert.ToChar(inputM2);
+                                if (rispostaM2 == 's')
+                                {
+                                    Console.WriteLine("Riepilogo: \n");
+                                    foreach (int r in risultati)
+                                    {
+                                        if (r == 0) { Console.WriteLine("M : croce"); }
+                                        else { Console.WriteLine("M : testa"); }
+                                    }
+                                }
+                                else { break; }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Riepilogo: \n");
+                                foreach (int r in risultati)
+                                {
+                                    if (r == 0) { Console.WriteLine("M : croce"); }
+                                    else { Console.WriteLine("M : testa"); }
+                                }
+                            }
                         }
                         break;
                 }
+
                 Console.WriteLine("Vuoi continuare? [s] per sì, [n] per no.");
                 userInput = Console.ReadLine();
                 char risposta = Convert.ToChar(userInput);
