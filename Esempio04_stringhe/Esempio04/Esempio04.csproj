@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A6345F0A-A412-4AE7-9543-479904BEBAC3}</ProjectGuid>
+    <ProjectGuid>{95E9AC01-557D-4F3F-9350-B29DFC63B33E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>dadi_e_monete</RootNamespace>
-    <AssemblyName>dadi_e_monete</AssemblyName>
+    <RootNamespace>Esempio04</RootNamespace>
+    <AssemblyName>Esempio04</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,12 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Coins.cs" />
-    <Compile Include="Dice.cs" />
-    <Compile Include="OggettoRandom.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TotalRecap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
