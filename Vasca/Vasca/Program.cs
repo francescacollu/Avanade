@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dadi_e_monete
+namespace Vasca
 {
-    class TotalRecap
+    class Program
     {
-
+        static void Main(string[] args)
+        {
+        }
     }
 }

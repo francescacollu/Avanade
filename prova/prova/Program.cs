@@ -10,17 +10,19 @@ namespace prova
     {
         static void Main(string[] args)
         {
-            Car car = new Car("Red");
-            Console.WriteLine(car.Describe());
+            Stack<int> liquido = new Stack<int>();
+            liquido.Push(0);
 
-            car = new Car("Green");
-            Console.WriteLine(car.Describe());
+            liquido.Push(liquido.Peek() + 1);
+            Console.WriteLine("Il livello di riempimento è " + liquido.Peek());
+            liquido.Push(liquido.Peek() + 2);
+            Console.WriteLine("Il livello di riempimento è " + liquido.Peek());
 
             Console.ReadLine();
         }
     }
 
-    class Car
+    /*class Car
     {
         private string color;
 
@@ -46,5 +48,5 @@ namespace prova
                 else { Console.WriteLine("This car can only be red!"); }
             }
         }
-    }
+    }*/
 }
