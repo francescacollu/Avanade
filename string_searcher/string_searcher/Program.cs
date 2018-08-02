@@ -16,7 +16,6 @@ namespace string_searcher
             // richiesta di inserimento del percorso
             Console.WriteLine("Inserire il percorso in cui si trova il file di testo che si vuole leggere: ");
             string path = Console.ReadLine();
-            //path = @"C:\Users\franc\Desktop\Avanade\Avanade\lorem_ipsum.txt";
 
             // verifiche del percorso
             if (File.Exists(path))
@@ -54,7 +53,7 @@ namespace string_searcher
                 }
             }
 
-            // inserimento della stringa ricercata e ricerca
+            // inserimento della stringa ricercata e ricerca, con segnalazione del numero di righe in cui si trova tale stringa.
             Console.WriteLine("\nInserire la stringa che si vuole cercare: ");
             string input = Console.ReadLine();
             string line;
@@ -84,7 +83,7 @@ namespace string_searcher
                 }
                 else
                 {
-                    Console.Write("\nLe righe che contengono la stringa '" + input + "' sono le seguenti: ");
+                    Console.WriteLine("\nLe righe che contengono la stringa '" + input + "' sono le seguenti: ");
                     foreach(int j in counter)
                     {
                         Console.WriteLine(j);
