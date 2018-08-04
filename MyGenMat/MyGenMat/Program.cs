@@ -11,7 +11,7 @@ namespace MyGenMat
 
     class Program
     {
-        //Funzione che legge la dimensione della matrice.
+        //Funzione statica che legge la dimensione della matrice.
         static int leggiDimensione()
         {
             string userInput;

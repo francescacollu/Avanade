@@ -78,12 +78,12 @@ namespace string_searcher
                 {
                     foreach (int j in counter)
                     {
-                        Console.WriteLine("\nLa riga in cui si trova la stringa '" + input + "' è la numero " + j + ".");
+                        Console.WriteLine("\nLa stringa '" + input + "' è contenuta nel documento " + counter.Count + " volta nella riga " + j + ".");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("\nLe righe che contengono la stringa '" + input + "' sono le seguenti: ");
+                    Console.WriteLine("\nLa stringa '" + input + "' è contenuta nel documento " +counter.Count+ " volte, nelle seguenti righe: ");
                     foreach(int j in counter)
                     {
                         Console.WriteLine(j);

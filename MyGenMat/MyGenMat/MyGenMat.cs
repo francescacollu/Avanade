@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 
 namespace MyGenMat
 {
-    // creazione della classe MyGenMat, matrici di generici
+    // creazione della classe MyGenMat; matrici di generici
     public class MyGenMat<T>
     {
         // matrice generica
         private T[,] matrix;
+        private int dim;
         
         // costruttore
         public MyGenMat(int dim)
         {
+            this.dim = dim;
             matrix = new T[dim+1,dim+1];
         }
 
