@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AlbergoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Camere">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="smallint" Nullable="false" />
+          <Property Name="piano" Type="tinyint" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="lettiAggiunti" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="optionals" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nominativo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="indirizzo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prenotazioni">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="periodoDal" Type="date" Nullable="false" />
+          <Property Name="periodoAl" Type="date" Nullable="false" />
+          <Property Name="camera" Type="smallint" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="prezzoTotale" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Albergo.dbo.Prezzi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Prezzi">
+          <Key>
+            <PropertyRef Name="periodoDal" />
+            <PropertyRef Name="periodoAl" />
+            <PropertyRef Name="tipoCamera" />
+            <PropertyRef Name="prezzo" />
+          </Key>
+          <Property Name="periodoDal" Type="date" Nullable="false" />
+          <Property Name="periodoAl" Type="date" Nullable="false" />
+          <Property Name="tipoCamera" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="prezzo" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="supplementi">
+          <Key>
+            <PropertyRef Name="codice" />
+          </Key>
+          <Property Name="codice" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voce" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="prezzo" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Albergo.dbo.Supplementi_prenotati' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Supplementi_prenotati">
+          <Key>
+            <PropertyRef Name="idPrenotazione" />
+            <PropertyRef Name="codiceSupplemento" />
+          </Key>
+          <Property Name="idPrenotazione" Type="int" Nullable="false" />
+          <Property Name="codiceSupplemento" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Prenotazi__camer__3E52440B">
+          <End Role="Camere" Type="Self.Camere" Multiplicity="1" />
+          <End Role="Prenotazioni" Type="Self.Prenotazioni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Camere">
+              <PropertyRef Name="numero" />
+            </Principal>
+            <Dependent Role="Prenotazioni">
+              <PropertyRef Name="camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prenotazi__idCli__3F466844">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+          <End Role="Prenotazioni" Type="Self.Prenotazioni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Prenotazioni">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlbergoModelStoreContainer">
+          <EntitySet Name="Camere" EntityType="Self.Camere" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clienti" EntityType="Self.Clienti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prenotazioni" EntityType="Self.Prenotazioni" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="supplementi" EntityType="Self.supplementi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prezzi" EntityType="Self.Prezzi" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Prezzi].[periodoDal] AS [periodoDal], 
+    [Prezzi].[periodoAl] AS [periodoAl], 
+    [Prezzi].[tipoCamera] AS [tipoCamera], 
+    [Prezzi].[prezzo] AS [prezzo]
+    FROM [dbo].[Prezzi] AS [Prezzi]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Supplementi_prenotati" EntityType="Self.Supplementi_prenotati" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Supplementi_prenotati].[idPrenotazione] AS [idPrenotazione], 
+    [Supplementi_prenotati].[codiceSupplemento] AS [codiceSupplemento]
+    FROM [dbo].[Supplementi_prenotati] AS [Supplementi_prenotati]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Prenotazi__camer__3E52440B" Association="Self.FK__Prenotazi__camer__3E52440B">
+            <End Role="Camere" EntitySet="Camere" />
+            <End Role="Prenotazioni" EntitySet="Prenotazioni" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prenotazi__idCli__3F466844" Association="Self.FK__Prenotazi__idCli__3F466844">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Prenotazioni" EntitySet="Prenotazioni" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlbergoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Camere">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="Int16" Nullable="false" />
+          <Property Name="piano" Type="Byte" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lettiAggiunti" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="optionals" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Prenotazioni" Relationship="Self.FK__Prenotazi__camer__3E52440B" FromRole="Camere" ToRole="Prenotazioni" />
+        </EntityType>
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nominativo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="indirizzo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Prenotazioni" Relationship="Self.FK__Prenotazi__idCli__3F466844" FromRole="Clienti" ToRole="Prenotazioni" />
+        </EntityType>
+        <EntityType Name="Prenotazioni">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="periodoDal" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="periodoAl" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="camera" Type="Int16" Nullable="false" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="prezzoTotale" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Camere" Relationship="Self.FK__Prenotazi__camer__3E52440B" FromRole="Prenotazioni" ToRole="Camere" />
+          <NavigationProperty Name="Clienti" Relationship="Self.FK__Prenotazi__idCli__3F466844" FromRole="Prenotazioni" ToRole="Clienti" />
+        </EntityType>
+        <EntityType Name="supplementi">
+          <Key>
+            <PropertyRef Name="codice" />
+          </Key>
+          <Property Name="codice" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voce" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezzo" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prezzi">
+          <Key>
+            <PropertyRef Name="periodoDal" />
+            <PropertyRef Name="periodoAl" />
+            <PropertyRef Name="tipoCamera" />
+            <PropertyRef Name="prezzo" />
+          </Key>
+          <Property Name="periodoDal" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="periodoAl" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="tipoCamera" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezzo" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplementi_prenotati">
+          <Key>
+            <PropertyRef Name="idPrenotazione" />
+            <PropertyRef Name="codiceSupplemento" />
+          </Key>
+          <Property Name="idPrenotazione" Type="Int32" Nullable="false" />
+          <Property Name="codiceSupplemento" Type="Byte" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Prenotazi__camer__3E52440B">
+          <End Role="Camere" Type="Self.Camere" Multiplicity="1" />
+          <End Role="Prenotazioni" Type="Self.Prenotazioni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Camere">
+              <PropertyRef Name="numero" />
+            </Principal>
+            <Dependent Role="Prenotazioni">
+              <PropertyRef Name="camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prenotazi__idCli__3F466844">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+          <End Role="Prenotazioni" Type="Self.Prenotazioni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Prenotazioni">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlbergoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Camere" EntityType="Self.Camere" />
+          <EntitySet Name="Clienti" EntityType="Self.Clienti" />
+          <EntitySet Name="Prenotazioni" EntityType="Self.Prenotazioni" />
+          <EntitySet Name="supplementi" EntityType="Self.supplementi" />
+          <EntitySet Name="Prezzi" EntityType="Self.Prezzi" />
+          <EntitySet Name="Supplementi_prenotati" EntityType="Self.Supplementi_prenotati" />
+          <AssociationSet Name="FK__Prenotazi__camer__3E52440B" Association="Self.FK__Prenotazi__camer__3E52440B">
+            <End Role="Camere" EntitySet="Camere" />
+            <End Role="Prenotazioni" EntitySet="Prenotazioni" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prenotazi__idCli__3F466844" Association="Self.FK__Prenotazi__idCli__3F466844">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Prenotazioni" EntitySet="Prenotazioni" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlbergoModelStoreContainer" CdmEntityContainer="AlbergoEntities">
+          <EntitySetMapping Name="Camere">
+            <EntityTypeMapping TypeName="AlbergoModel.Camere">
+              <MappingFragment StoreEntitySet="Camere">
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="piano" ColumnName="piano" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="lettiAggiunti" ColumnName="lettiAggiunti" />
+                <ScalarProperty Name="optionals" ColumnName="optionals" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clienti">
+            <EntityTypeMapping TypeName="AlbergoModel.Clienti">
+              <MappingFragment StoreEntitySet="Clienti">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nominativo" ColumnName="nominativo" />
+                <ScalarProperty Name="indirizzo" ColumnName="indirizzo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prenotazioni">
+            <EntityTypeMapping TypeName="AlbergoModel.Prenotazioni">
+              <MappingFragment StoreEntitySet="Prenotazioni">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="periodoDal" ColumnName="periodoDal" />
+                <ScalarProperty Name="periodoAl" ColumnName="periodoAl" />
+                <ScalarProperty Name="camera" ColumnName="camera" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="prezzoTotale" ColumnName="prezzoTotale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="supplementi">
+            <EntityTypeMapping TypeName="AlbergoModel.supplementi">
+              <MappingFragment StoreEntitySet="supplementi">
+                <ScalarProperty Name="codice" ColumnName="codice" />
+                <ScalarProperty Name="voce" ColumnName="voce" />
+                <ScalarProperty Name="prezzo" ColumnName="prezzo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prezzi">
+            <EntityTypeMapping TypeName="AlbergoModel.Prezzi">
+              <MappingFragment StoreEntitySet="Prezzi">
+                <ScalarProperty Name="periodoDal" ColumnName="periodoDal" />
+                <ScalarProperty Name="periodoAl" ColumnName="periodoAl" />
+                <ScalarProperty Name="tipoCamera" ColumnName="tipoCamera" />
+                <ScalarProperty Name="prezzo" ColumnName="prezzo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplementi_prenotati">
+            <EntityTypeMapping TypeName="AlbergoModel.Supplementi_prenotati">
+              <MappingFragment StoreEntitySet="Supplementi_prenotati">
+                <ScalarProperty Name="idPrenotazione" ColumnName="idPrenotazione" />
+                <ScalarProperty Name="codiceSupplemento" ColumnName="codiceSupplemento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
