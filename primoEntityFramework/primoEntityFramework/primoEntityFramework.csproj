@@ -72,6 +72,7 @@
     <Compile Include="Clienti.cs">
       <DependentUpon>Albergo.tt</DependentUpon>
     </Compile>
+    <Compile Include="EsempiEF.cs" />
     <Compile Include="Prenotazioni.cs">
       <DependentUpon>Albergo.tt</DependentUpon>
     </Compile>
